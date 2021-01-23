@@ -2,7 +2,10 @@
 title: "CarSellingPrice"
 author: "Rob Quispe"
 date: "1/23/2021"
-output: html_document
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +19,7 @@ my_milage <- 25000
 
 ```
 
-```{r echo=FALSE}
+```{r echo=TRUE}
 view(nissanaltima)
 ggplot(data = nissanaltima) +
   geom_point(aes(x =price, y =mileage))
