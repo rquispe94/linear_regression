@@ -6,12 +6,14 @@ output:
   html_document:
     theme: cerulean
     code_folding: hide
+    
 ---
 
 ```{r setup, include=FALSE}
 library(mosaic)
 library(tidyverse)
 library(pander)
+library(car)
 nissanaltima <- read.csv("C:/Users/danci/OneDrive - BYU-Idaho/Desktop/Rstudio/Statistics-Notebook-master/Analyses/Linear Regression/linear/linear_regression/carprice/car_price_nissan-altima-2018.csv")
 
 my_milage <- 25000
@@ -21,11 +23,18 @@ my_milage <- 25000
 
 ```{r echo=TRUE}
 view(nissanaltima)
-ggplot(data = nissanaltima) +
-  geom_point(aes(x =price, y =mileage))
+ggplot(data = nissanaltima, aes(x =mileage, y =sqrt(price))) +
+  geom_point() +
+  geom_smooth(method = "lm")
 
-model_1 <- lm(price ~ mileage, data = nissanaltima)
+
+
+model_1 <- lm((price^(1/4)) ~ mileage, data = nissanaltima)
 summary(model_1) %>% pander()
+
+predict(model_1, data.frame(mileage = 25000), interval = "prediction")^4 %>% pander()
+
+boxCox(model_1)
 
 
 ```
