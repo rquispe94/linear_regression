@@ -8,15 +8,21 @@ output: html_document
 ```{r setup, include=FALSE}
 library(mosaic)
 library(tidyverse)
+library(pander)
 nissanaltima <- read.csv("C:/Users/danci/OneDrive - BYU-Idaho/Desktop/Rstudio/Statistics-Notebook-master/Analyses/Linear Regression/linear/linear_regression/carprice/car_price_nissan-altima-2018.csv")
-view(nissanaltima)
+
 my_milage <- 25000
 
 
 ```
 
-```{r}
+```{r echo=FALSE}
+view(nissanaltima)
 ggplot(data = nissanaltima) +
-  geom_point(aes(x = mileage, y = price))
+  geom_point(aes(x =price, y =mileage))
+
+model_1 <- lm(price ~ mileage, data = nissanaltima)
+summary(model_1) %>% pander()
+
 
 ```
