@@ -1,0 +1,16 @@
+---
+title: "CarSellingPrice"
+author: "Rob Quispe"
+date: "1/23/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(mosaic)
+library(tidyverse)
+nissanaltima <- read.csv("C:/Users/danci/OneDrive - BYU-Idaho/Desktop/Rstudio/math 425/car_price_nissan-altima-2018.csv")
+view(nissanaltima)
+
+
+```
+
